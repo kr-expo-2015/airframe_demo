@@ -17,5 +17,11 @@ end
 Simulink.fileGenControl('set', 'CacheFolder', myCacheFolder, ...
    'CodeGenFolder', myCacheFolder);
 
+% Load data and bus elements
+load('f14_digital_data.mat');
+load('data\buses.mat');
+
 end
+
+
 

@@ -2,7 +2,7 @@ Model {
   Name			  "AnalogControl"
   Version		  8.5
   MdlSubVersion		  0
-  SavedCharacterEncoding  "US-ASCII"
+  SavedCharacterEncoding  "windows-949"
   GraphicalInterface {
     NumRootInports	    3
     Inport {
@@ -24,7 +24,7 @@ Model {
       BusOutputAsStruct	      "off"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.21"
+    ComputedModelVersion    "1.22"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -46,7 +46,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [12.0, 18.0, 786.0, 553.0]
+      Location		      [900.0, 301.0, 786.0, 553.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -70,9 +70,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[744.0, 379.0]
-	ZoomFactor		[0.95412996855935206]
-	Offset			[-23.4230534217877, -15.360258816340775]
+	Extents			[734.0, 353.0]
+	ZoomFactor		[0.954129968559352]
+	Offset			[-23.423053421787756, -15.360258816340775]
       }
     }
   }
@@ -80,11 +80,11 @@ Model {
   Creator		  "The MathWorks Inc."
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "The MathWorks Inc."
+  LastModifiedBy	  "ylee"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Dec 30 19:14:27 2014"
-  RTWModifiedTimeStamp	  315141323
-  ModelVersionFormat	  "1.%<AutoIncrement:21>"
+  LastModifiedDate	  "Wed May 20 11:09:00 2015"
+  RTWModifiedTimeStamp	  354020937
+  ModelVersionFormat	  "1.%<AutoIncrement:22>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -915,6 +915,7 @@ Model {
       Variant		      off
       GeneratePreprocessorConditionals off
       ContentPreviewEnabled   off
+      IsWebBlock	      off
     }
     Block {
       BlockType		      Sum
@@ -943,7 +944,7 @@ Model {
   }
   System {
     Name		    "AnalogControl"
-    Location		    [12, 18, 798, 571]
+    Location		    [900, 301, 1686, 854]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -957,7 +958,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "95"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "34"
+    SIDHighWatermark	    "35"
     Block {
       BlockType		      Inport
       Name		      "pilot_bus"
@@ -1166,6 +1167,17 @@ Model {
       BackgroundColor	      "yellow"
       ShowName		      off
       Gain		      "Kf"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain1"
+      SID		      "35"
+      Position		      [300, 20, 340, 60]
+      ZOrder		      1
+      BackgroundColor	      "yellow"
+      NamePlacement	      "alternate"
+      ShowName		      off
+      Gain		      "Kh"
     }
     Block {
       BlockType		      Gain
@@ -1500,8 +1512,7 @@ Model {
       ZOrder		      8
       SrcBlock		      "Stick\nPrefilter"
       SrcPort		      1
-      Points		      [100, 0]
-      DstBlock		      "Sum2"
+      DstBlock		      "Gain1"
       DstPort		      1
     }
     Line {
@@ -1599,14 +1610,21 @@ Model {
       DstBlock		      "Command"
       DstPort		      1
     }
+    Line {
+      ZOrder		      22
+      SrcBlock		      "Gain1"
+      SrcPort		      1
+      Points		      [20, 0]
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
     Annotation {
       SID		      "34"
       Name		      "Copyright 1990-2014 The MathWorks, Inc."
-      Position		      [268, 344, 460, 360]
+      Position		      [268, 344, 469, 361]
       InternalMargins	      [1, 1, 1, 1]
       FixedHeight	      off
       FixedWidth	      off
-      DropShadow	      off
       ZOrder		      -1
     }
   }
